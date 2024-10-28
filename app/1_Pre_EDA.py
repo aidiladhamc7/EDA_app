@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-from module.EDA_BE import display_eda_info
+from module.EDA_BE import display_eda_info, round_decimal_columns, check_and_remove_duplicates, check_and_fill_null_values
 
 # Insert Tittle and markdown
 st.title("Exploratory Data Analysis🕵️")
@@ -13,39 +13,33 @@ uploaded_files = st.file_uploader("Upload a CSV file here:", type="csv")
 
 # Check if file has been uploaded. If uploaded, read the file.
 if uploaded_files is not None:
-    data = pd.read_csv(uploaded_files)
+    raw_data = pd.read_csv(uploaded_files)
     
+    # Exclude any column with "ID" in its name
+    data = raw_data.loc[:, ~raw_data.columns.str.contains('ID', case=False)]
+    
+    # Round numeric columns to 2 decimal places
+    rounded_data = round_decimal_columns(data)
+
+    # Display basic EDA info
     head_data, shape_info, columns_list, data_types = display_eda_info(data)
 
-    # Check for duplicate rows
-    if st.button("Check Duplicates"):
-        duplicated_rows = data[data.duplicated(keep=False)]
-        if not duplicated_rows.empty:
-            st.write("Duplicated Rows:")
-            st.dataframe(duplicated_rows)
-        else:
-            st.write("No duplicated rows found.")
-    
-    # Remove duplicate rows
-    if st.button("Remove Duplicates"):
-        data.drop_duplicates(keep='first', inplace=True)
-        st.write("Data after removing duplicates:")
-        st.dataframe(data)
-    # Exclude any column with "ID" in its name
-    data_filtered = data.loc[:, ~data.columns.str.contains('ID', case=False)]
+    # Check for duplicates and remove them
+    st.write("### Check for Duplicates and Remove")
+    Remove_Duplicated = check_and_remove_duplicates(data)
+      
+   # Check for null values
+    st.write("### Check for Null Values and Fill")
+    Fill_Null = check_and_fill_null_values(data)
 
-    st.write("Data after excluding columns with 'ID' in their names:")
-    st.dataframe(data_filtered)
-   
     # Seperate object and numeric columns
     obj = [col for col in data.columns if data[col].dtype == 'object']
     int_float = [col for col in data.columns if data[col].dtype in ['int64', 'float64']]  
 
-                                                                                                                                                                         
+                                                                                                                                                                    
 
-
-# Insert Remove Null Values button to remove values and replace with mean & mode
-# Adding submit button sidebar
+    # Insert Remove Null Values button to remove values and replace with mean & mode
+    # Adding submit button sidebar
     with st.form(key='my_form'):
         with st.sidebar:
             st.sidebar.header("To Remove Null Values, press button below")
