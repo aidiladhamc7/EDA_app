@@ -50,13 +50,18 @@ def check_and_remove_duplicates(data):
             st.write("#### New Total Number of Rows and Columns:")
             st.write(f"Rows: {data.shape[0]}, Columns: {data.shape[1]}")
 
-        return data
     else:
         # If no duplicates are found
         st.write("No duplicated rows found.")
-    
+
+    return data    
 
 def check_and_fill_null_values(data):
+    # Check if data is valid (not None)
+    if data is None:
+        st.write("Error: No data to check for null values.")
+        return None  # Return None if no data is present
+    
     # Check for null values
     null_counts = data.isnull().sum()
     
