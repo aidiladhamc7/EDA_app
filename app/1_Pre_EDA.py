@@ -1,15 +1,12 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 from datetime import datetime
-import plotly.express as px
 from module.EDA_BE import display_eda_info, round_decimal_columns, check_and_fill_null_values, check_and_remove_duplicates
 
 # Insert Tittle and markdown
 st.title("Exploratory Data Analysis🕵️")
 st.markdown("### Pre- EDA🎈")
 
-    
 def run():
     # Setting up the file uploader widget
     uploaded_files = st.file_uploader("Upload a CSV file here:", type="csv")

@@ -7,11 +7,12 @@ import numpy as np
 st.title("Exploratory Data Analysis🕵️")
 st.subheader("Univariate Analysis🎯")
 
-st.markdown("### 1. Univariate Analysis for Numerical Variables")
+
 # Load the cleaned data from session state
 if 'cleaned_data' in st.session_state:
     df = st.session_state['cleaned_data']
-       
+    
+    st.markdown("### 1. Univariate Analysis for Numerical Variables")
     # Select a numeric column for univariate analysis
     numeric_column = st.selectbox("Select a numeric column for univariate analysis", df.select_dtypes(include=np.number).columns)
     
@@ -33,15 +34,15 @@ if 'cleaned_data' in st.session_state:
     skewness = df[numeric_column].skew()
     st.write(f"Skewness: {skewness}")
 
-    # Generate hypothesis based on skewness
+    # Generate Finding based on skewness
     if skewness > 0:
-        hypothesis = f"Hypothesis: More occurrences of lower {numeric_column} values compared to higher {numeric_column} values."
+        Finding = f"Finding: More occurrences of lower {numeric_column} values compared to higher {numeric_column} values."
     elif skewness < 0:
-        hypothesis = f"Hypothesis: More occurrences of higher {numeric_column} values compared to lower {numeric_column} values."
+        Finding = f"Finding: More occurrences of higher {numeric_column} values compared to lower {numeric_column} values."
     else:
-        hypothesis = f"Hypothesis: The distribution of {numeric_column} values is approximately symmetric, with similar frequencies across value ranges."       
+        Finding = f"Finding: The distribution of {numeric_column} values is approximately symmetric, with similar frequencies across value ranges."       
 
-    st.write(hypothesis)
+    st.write(Finding)
   
   
     # B. Measures of Central Tendency
