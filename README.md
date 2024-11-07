@@ -1,4 +1,4 @@
-# Welcome to My Streamlit App - *Simple Exploratory Data Analysis*
+# Welcome to My Streamlit App - *Simple Exploratory Data Analysis* ![](https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif)
 
 I'm excited to share my project with you! This app is a simple Exploratory Data Analysis (EDA) tool that helps you gain insights from your data quickly and easily. It performs essential data analysis tasks such as viewing summary statistics, visualizing distributions, identifying correlations, and detecting potential outliers. With this app, you can make sense of your data and prepare it for deeper analysis.
 
