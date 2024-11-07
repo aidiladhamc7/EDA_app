@@ -1,4 +1,4 @@
-# Welcome to My Streamlit App - *Adham Simple Calculator*
+# Welcome to My Streamlit App - *Simple Exploratory Data Analysis*
 
 I'm excited to share my project with you! This app is a simple Exploratory Data Analysis (EDA) tool that helps you gain insights from your data quickly and easily. It performs essential data analysis tasks such as viewing summary statistics, visualizing distributions, identifying correlations, and detecting potential outliers. With this app, you can make sense of your data and prepare it for deeper analysis.
 
