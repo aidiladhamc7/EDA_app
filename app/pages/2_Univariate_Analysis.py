@@ -126,9 +126,6 @@ if 'cleaned_data' in st.session_state:
 
     categorical_value_proportion = (df[categorical_column].value_counts(normalize=True) * 100).round(0)
 
-    st.write(f"### Class Counts for: {categorical_column}")
-    st.write(categorical_value_counts)
-
     st.write(f"### Class Proportion for: {categorical_column} (%)")
     st.write(categorical_value_proportion)
 
@@ -160,6 +157,10 @@ if 'cleaned_data' in st.session_state:
 
     # Bar Chart for class count
     st.write(f"### Bar Chart for: {categorical_column}")
+
+    st.write(f"#### Class Counts for: {categorical_column}")
+    st.write(categorical_value_counts)
+
     categorical_value_counts_df = categorical_value_counts.reset_index()
     categorical_value_counts_df.columns = [categorical_column, 'count']  # Rename columns for Plotly
     fig_bar = px.bar(
