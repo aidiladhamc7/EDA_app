@@ -169,7 +169,10 @@ if 'cleaned_data' in st.session_state:
         y='count',
         title=f"Count of {categorical_column} Categories",
         labels={categorical_column: categorical_column, 'count': 'Count'},
-        text='count'  # Display count values on top of the bars
+        text='count',  # Display count values on top of the bars
+        color=categorical_column,  # Set color based on the category
+        color_discrete_sequence=px.colors.qualitative.Pastel  # Customize color palette
+        
     )
 
     fig_bar.update_layout(
