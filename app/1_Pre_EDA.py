@@ -15,8 +15,6 @@ def run():
     if uploaded_files is not None:
         # Read and process the uploaded file
         data = pd.read_csv(uploaded_files)
-    elif uploaded_files.name.endswith(".xlsx"):
-        data = pd.read_excel(uploaded_files)
 
         # Exclude any column with "ID" in its name
         data = data.loc[:, ~data.columns.str.contains('ID', case=False)]
