@@ -4,7 +4,7 @@ from datetime import datetime
 from module.EDA_BE import display_eda_info, round_decimal_columns, check_and_fill_null_values, check_and_remove_duplicates
 
 # Insert Tittle and markdown
-st.title("Hi this Fahmi again, I have changed the code Exploratory Data Analysis🕵️")
+st.title("Hi Jimboss, gunalah app ini untuk Exploratory Data Analysis🕵️")
 st.markdown("### Pre- EDA🎈")
 
 def run():
